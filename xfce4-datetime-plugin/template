@@ -1,0 +1,13 @@
+# Template file for 'xfce4-datetime-plugin'
+pkgname=xfce4-datetime-plugin
+version=0.7.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="intltool pkg-config"
+makedepends="xfce4-panel-devel libXtst-devel qrencode-devel"
+short_desc="Date and time plugin for the Xfce4 panel"
+maintainer="AleksTJ <alekstj@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
+distfiles="https://archive.xfce.org/src/panel-plugins/${pkgname}/${version%.*}/${pkgname}-${version}.tar.bz2"
+checksum=297f3077f7aee52a237449fbd8595e232267bc600b5b9e7ddc5baab306ed67b9
