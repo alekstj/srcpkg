@@ -1,0 +1,33 @@
+# Template file for 'qomp'
+
+pkgname=qomp
+version=1.4
+revision=1
+maintainer="AleksTJ <alekstj@gmail.com>"
+homepage="http://qomp.sourceforge.net/"
+license="GPLv3"
+short_desc="Quick(Qt) Online Music Player one player for different online music hostings"
+archs="x86_64"
+repository=nonfree
+restricted=yes
+nostrip=yes
+depends="qt5-multimedia qt5-x11extras libtaginfo libid3tag libcue"
+
+distfiles="https://launchpad.net/~qomp/+archive/ubuntu/ppa/+files/${pkgname}_${version}-0ubuntu1~0ppa1~cosmic_amd64.deb"
+checksum=70d589891c483ba85bf8f784dc8a5db0ac7cced33e0f99e2801e8d337292f6ea
+
+_file="${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}-0ubuntu1~0ppa1~cosmic_amd64.deb"
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+
+	ar x ${_file}
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+
+	# Remove the Debian/Ubuntu crontab
+	rm -rf ${DESTDIR}/etc
+	rm -rf ${DESTDIR}/opt/google/chrome/cron
+}
