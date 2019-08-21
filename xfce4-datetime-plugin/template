@@ -1,6 +1,6 @@
 # Template file for 'xfce4-datetime-plugin'
 pkgname=xfce4-datetime-plugin
-version=0.7.1
+version=0.8.0
 revision=1
 build_style=gnu-configure
 hostmakedepends="intltool pkg-config"
@@ -10,4 +10,4 @@ maintainer="AleksTJ <alekstj@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
 distfiles="https://archive.xfce.org/src/panel-plugins/${pkgname}/${version%.*}/${pkgname}-${version}.tar.bz2"
-checksum=e0c7321346ded2539c4688c593f650696ed0ddca0a5f9d4e404d0e7fc42ae256
+checksum=cd358bc2ff0707b8ef1504396a19b0a27f802c2ec7bceb5cebe2c7baf6adebd4
