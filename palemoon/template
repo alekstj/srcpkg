@@ -1,0 +1,45 @@
+# Template file for 'palemoon'
+pkgname=palemoon
+version=28.5.0
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+nostrip=yes
+hostmakedepends="bzip2"
+short_desc="Web Browser (firefox based)"
+#maintainer=" <>"
+license="GPL-3.0-or-later"
+homepage="http://www.palemoon.org"
+distfiles="http://archive.palemoon.org/$pkgname/${version:0:2}.x/$version/$pkgname-${version}.linux-x86_64.tar.bz2"
+checksum="f9e7c4b226ccc8ac34e0e8d281fd3352656594fbfd7b033d725787ccf40f0c1c"
+
+do_exctract(){
+	tar -xf ${XBPS_SRCDISTDIR}/$pkgname-${version}/$pkgname-${version}.linux-x86_64.tar.bz2 
+}
+
+do_build(){
+	install -dm755 ${DESTDIR}/opt
+	cp -R $pkgname ${DESTDIR}/opt/
+}
+
+do_install(){
+	install -dm755 ${DESTDIR}/usr/bin
+	install -dm755 ${DESTDIR}/usr/share/applications
+	ln -sv /opt/$pkgname/$pkgname ${DESTDIR}/usr/bin/$pkgname
+	cat > ${DESTDIR}/usr/share/applications/$pkgname.desktop << "EOF"
+[Desktop Entry]
+Name=Palemoon
+Comment=Palemoon Web Browser
+Exec=/usr/bin/palemoon %u
+Icon=palemoon
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml
+;x-scheme-handler/http;x-scheme-handler/https;
+Categories=Network;WebBrowser;
+EOF
+	pushd ${DESTDIR}
+	install -Dvm644 opt/palemoon/browser/icons/mozicon128.png \
+		usr/share/pixmaps/palemoon.png
+	popd
+}
