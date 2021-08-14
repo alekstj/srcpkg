@@ -1,0 +1,23 @@
+# Template file for 'ymuse'
+pkgname=ymuse
+version=0.17
+revision=1
+archs="x86_64"
+short_desc="GTK client for Music Player Daemon"
+license="custom:apache-2.0"
+homepage="https://github.com/yktoo/ymuse"
+nostrip=yes
+distfiles="https://github.com/yktoo/ymuse/releases/download/v${version}/ymuse_${version}_linux_amd64.deb"
+makedepends="tar"
+depends="gtk+3"
+checksum=3881178b59c2c96fdf6ff55fd863310c58b94ed85156dd24c733e004abba37c8
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/$pkgname-$version/ymuse_${version}_linux_amd64.deb
+}
+
+do_install() {
+	tar xvf data.tar.gz -C ${DESTDIR}
+}
+
